@@ -1,0 +1,6 @@
+{
+    "language_name": "Perl",
+    "command": "perl",
+    "file_extension": ".pl",
+    "version_argument": "-v"
+}

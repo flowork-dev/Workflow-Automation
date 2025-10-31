@@ -1,0 +1,69 @@
+{
+    "id": "agent_host",
+    "name": "Agent Host",
+    "version": "2.2",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Acts as an autonomous agent on the canvas, using connected nodes as its tools, brain, and prompt to achieve a high-level objective.",
+    "type": "CONTROL_FLOW",
+    "entry_point": "processor.AgentHost",
+    "tier": "architect",
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel",
+        "agent_executor_service"
+    ],
+    "display_properties": {
+        "shape": "agent_host"
+    },
+    "properties": [],
+    "input_ports": [
+        {
+            "name": "payload_input",
+            "display_name": "Payload",
+            "tooltip": "Standard data input for the agent."
+        }
+    ],
+    "tool_ports": [
+        {
+            "name": "brain_port",
+            "display_name": "Brain",
+            "tooltip": "Connect a single AI Provider or local model node here to act as the agent's brain."
+        },
+        {
+            "name": "prompt_port",
+            "display_name": "Prompt",
+            "tooltip": "Connect a node that provides the agent's objective/prompt string."
+        },
+        {
+            "name": "tools_port",
+            "display_name": "Tools",
+            "tooltip": "Connect one or more modules here to serve as tools for the agent."
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success (Final Answer)"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.agent_final_answer",
+            "type": "string",
+            "description": "The final answer or result from the agent after completing its objective."
+        },
+        {
+            "name": "data.agent_interaction_log",
+            "type": "list",
+            "description": "A step-by-step log of the agent's thoughts, actions, and observations."
+        }
+    ]
+}

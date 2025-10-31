@@ -1,0 +1,14 @@
+{
+    "id": "system_diagnostics_plugin",
+    "name": "System Diagnostics UI Provider",
+    "version": "1.0",
+    "author": "Flowork System",
+    "description": "A system plugin that provides the UI bridge to the DiagnosticsService.",
+    "type": "PLUGIN",
+    "entry_point": "processor.SystemDiagnosticsPlugin",
+    "requires_services": [
+        "logger",
+        "loc",
+        "diagnostics_service"
+    ]
+}

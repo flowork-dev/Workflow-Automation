@@ -1,0 +1,14 @@
+{
+  "name": "flowork-docs",
+  "version": "1.0.0",
+  "description": "Documentation for the Flowork platform.",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.2.3"
+  }
+}

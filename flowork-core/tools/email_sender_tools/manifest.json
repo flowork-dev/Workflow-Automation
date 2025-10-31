@@ -1,0 +1,63 @@
+{
+    "id": "email_sender_tools",
+    "name": "Email Sender Tools",
+    "version": "1.3.0",
+    "icon_file": "icon.png",
+    "author": "awenk audico",
+    "email": "sahidinaola@gmail.com",
+    "website": "www.teetah.art",
+    "description": "Sends an email. 'data' must contain 'recipient_to', 'subject', 'body'. For attachments, provide an 'attachments' list. RULE: For existing files (like images), provide the path as a STRING. To create a file from text (like an article), provide an object {'filename': 'file.txt', 'content': 'your text...'}. PRO TIP: For content, you can also use a payload variable like {{data.article_text}} to avoid sending large texts to the AI.",
+    "type": "PLUGIN",
+    "entry_point": "processor.EmailSenderModule",
+    "tier": "basic",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel",
+        "variable_manager_service"
+    ],
+    "display_properties": {
+        "shape": "agent_brain",
+        "icon_file": "email_icon.png"
+    },
+    "properties": [
+        {
+            "id": "recipient_to",
+            "type": "string",
+            "label": "loc.prop_recipient_manual_label"
+        },
+        {
+            "id": "subject",
+            "type": "string",
+            "label": "loc.prop_subject_manual_label"
+        },
+        {
+            "id": "body",
+            "type": "textarea",
+            "label": "loc.prop_body_manual_label"
+        },
+        {
+            "id": "attachment_path_variable",
+            "type": "string",
+            "label": "loc.prop_attachment_path_label",
+            "default": "data.image_path"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success",
+            "port_position": "top"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.email_status",
+            "type": "string",
+            "description": "The status of the email sending operation (e.g., 'Sent successfully')."
+        }
+    ]
+}

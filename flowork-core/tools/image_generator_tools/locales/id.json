@@ -1,0 +1,5 @@
+{
+    "module_name": "Image Generator Tools",
+    "prop_image_gen_prompt_source_label": "Get Prompt from Variable:",
+    "prop_image_gen_model_info": "The AI model for image generation is configured globally in the main application Settings (AI Center Configuration -> Image)."
+}

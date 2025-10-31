@@ -1,0 +1,11 @@
+
+#######################################################################
+# dev : awenk audico
+# EMAIL SAHIDINAOLA@GMAIL.COM
+# WEBSITE WWW.TEETAH.ART
+# File NAME : C:\Users\User\Desktop\FLOWORK\flowork_kernel\services\semantic_search_service\__init__.py
+# JUMLAH BARIS : 14
+#######################################################################
+
+
+

@@ -1,0 +1,206 @@
+{
+    "_commented_out_services": [
+        {
+            "COMMENT": "Dinonaktifkan untuk rilis MVP Open Core sesuai Roadmap Fase 3.",
+            "id": "cloud_sync_service",
+            "path": "flowork_kernel.services.cloud_sync_service.cloud_sync_service",
+            "class": "CloudSyncService"
+        }
+    ],
+    "services": [
+        {
+            "id": "integrity_checker_service",
+            "path": "flowork_kernel.services.integrity_checker_service.integrity_checker_service",
+            "class": "IntegrityCheckerService"
+        },
+        {
+            "id": "license_manager_service",
+            "path": "flowork_kernel.services.license_manager_service.license_manager_service",
+            "class": "LicenseManagerService"
+        },
+        {
+            "id": "permission_manager_service",
+            "path": "flowork_kernel.services.permission_manager_service.permission_manager_service",
+            "class": "PermissionManagerService"
+        },
+        {
+            "id": "event_bus",
+            "path": "flowork_kernel.services.event_bus_service.event_bus_service",
+            "class": "EventBusService"
+        },
+        {
+            "id": "localization_manager",
+            "path": "flowork_kernel.services.localization_manager_service.localization_manager_service",
+            "class": "LocalizationManagerService"
+        },
+        {
+            "id": "update_service",
+            "path": "flowork_kernel.services.update_service.update_service",
+            "class": "UpdateService"
+        },
+        {
+            "id": "startup_service",
+            "path": "flowork_kernel.services.startup_service.startup_service",
+            "class": "StartupService"
+        },
+        {
+            "id": "diagnostics_service",
+            "path": "flowork_kernel.services.diagnostics_service.diagnostics_service",
+            "class": "DiagnosticsService"
+        },
+        {
+            "id": "scanner_manager_service",
+            "path": "flowork_kernel.services.scanner_manager_service.scanner_manager_service",
+            "class": "ScannerManagerService"
+        },
+        {
+            "COMMENT_FASE_3": "Community/Marketplace features disabled for Open Core MVP.",
+            "id": "community_addon_service",
+            "path": "flowork_kernel.services.community_addon_service.community_addon_service",
+            "class": "CommunityAddonService"
+        },
+        {
+            "id": "state_manager",
+            "path": "flowork_kernel.services.state_manager_service.state_manager_service",
+            "class": "StateManagerService"
+        },
+        {
+            "id": "database_service",
+            "path": "flowork_kernel.services.database_service.database_service",
+            "class": "DatabaseService"
+        },
+        {
+            "id": "dataset_manager_service",
+            "path": "flowork_kernel.services.dataset_manager_service.dataset_manager_service",
+            "class": "DatasetManagerService"
+        },
+        {
+            "id": "variable_manager",
+            "path": "flowork_kernel.services.variable_manager_service.variable_manager_service",
+            "class": "VariableManagerService"
+        },
+        {
+            "id": "module_manager_service",
+            "path": "flowork_kernel.services.module_manager_service.module_manager_service",
+            "class": "ModuleManagerService"
+        },
+        {
+            "id": "plugin_manager_service",
+            "path": "flowork_kernel.services.plugin_manager_service.plugin_manager_service",
+            "class": "PluginManagerService"
+        },
+        {
+            "id": "tools_manager_service",
+            "path": "flowork_kernel.services.tools_manager_service.tools_manager_service",
+            "class": "ToolsManagerService"
+        },
+        {
+            "id": "widget_manager_service",
+            "path": "flowork_kernel.services.widget_manager_service.widget_manager_service",
+            "class": "WidgetManagerService"
+        },
+        {
+            "id": "trigger_manager_service",
+            "path": "flowork_kernel.services.trigger_manager_service.trigger_manager_service",
+            "class": "TriggerManagerService"
+        },
+        {
+            "id": "preset_manager_service",
+            "path": "flowork_kernel.services.preset_manager_service.preset_manager_service",
+            "class": "PresetManagerService"
+        },
+        {
+            "id": "scheduler_manager_service",
+            "path": "flowork_kernel.services.scheduler_manager_service.scheduler_manager_service",
+            "class": "SchedulerManagerService"
+        },
+        {
+            "id": "os_scheduler_service",
+            "path": "flowork_kernel.services.os_scheduler_service.os_scheduler_service",
+            "class": "OsSchedulerService"
+        },
+        {
+            "id": "api_server_service",
+            "path": "flowork_kernel.services.api_server_service.api_server_service",
+            "class": "ApiServerService"
+        },
+        {
+            "id": "behavior_manager_service",
+            "path": "flowork_kernel.services.behavior_manager_service.behavior_manager_service",
+            "class": "BehaviorManagerService"
+        },
+        {
+            "COMMENT_FASE_3": "Potentially remove if formatters are not used or simplified.",
+            "id": "formatter_manager_service",
+            "path": "generated_services.formatter_manager_service.service",
+            "class": "FormatterManagerService",
+            "source_workflow": "core_services/formatter_manager.flowork"
+        },
+        {
+            "id": "prompt_manager_service",
+            "path": "flowork_kernel.services.prompt_manager_service.prompt_manager_service",
+            "class": "PromptManagerService"
+        },
+        {
+            "id": "ai_provider_manager_service",
+            "path": "flowork_kernel.services.ai_provider_manager_service.ai_provider_manager_service",
+            "class": "AIProviderManagerService"
+        },
+        {
+            "id": "ai_training_service",
+            "path": "flowork_kernel.services.ai_training_service.ai_training_service",
+            "class": "AITrainingService"
+        },
+        {
+            "id": "model_converter_service",
+            "path": "flowork_kernel.services.model_converter_service.model_converter_service",
+            "class": "ModelConverterService"
+        },
+        {
+            "id": "ai_analyzer_service",
+            "path": "flowork_kernel.services.ai_analyzer_service.ai_analyzer_service",
+            "class": "AIAnalyzerService"
+        },
+        {
+            "id": "ai_architect_service",
+            "path": "flowork_kernel.services.ai_architect_service.ai_architect_service",
+            "class": "AiArchitectService"
+        },
+        {
+            "id": "semantic_search_service",
+            "path": "flowork_kernel.services.semantic_search_service.semantic_search_service",
+            "class": "SemanticSearchService"
+        },
+        {
+            "id": "agent_manager_service",
+            "path": "flowork_kernel.services.agent_manager_service.agent_manager_service",
+            "class": "AgentManagerService"
+        },
+        {
+            "id": "metrics_service",
+            "path": "flowork_kernel.services.metrics_service.metrics_service",
+            "class": "MetricsService"
+        },
+        {
+            "id": "workflow_executor_service",
+            "path": "flowork_kernel.services.workflow_executor_service.workflow_executor_service",
+            "class": "WorkflowExecutorService"
+        },
+        {
+            "id": "agent_executor_service",
+            "path": "flowork_kernel.services.agent_executor_service.agent_executor_service",
+            "class": "AgentExecutorService"
+        },
+        {
+            "id": "news_fetcher_service",
+            "path": "flowork_kernel.services.news_fetcher_service.news_fetcher_service",
+            "class": "NewsFetcherService"
+        },
+        {
+            "COMMENT_FASE_3": "Gateway connector might be removed or heavily modified post-MVP if communication becomes purely WebSocket.",
+            "id": "gateway_connector_service",
+            "path": "flowork_kernel.services.gateway_connector_service.gateway_connector_service",
+            "class": "GatewayConnectorService"
+        }
+    ]
+}

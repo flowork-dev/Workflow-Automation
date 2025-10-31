@@ -1,0 +1,5 @@
+# Core system & web dependencies, no heavy ML/AI libs here.
+psutil
+requests
+python-dotenv
+packaging

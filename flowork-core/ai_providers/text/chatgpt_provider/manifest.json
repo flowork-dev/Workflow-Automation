@@ -1,0 +1,17 @@
+{
+    "id": "chatgpt_provider",
+    "name": "OpenAI ChatGPT Provider",
+    "version": "1.0",
+    "author": "AWENK AUDICO",
+    "description": "Provides connectivity and chat functionality with OpenAI's GPT models.",
+    "type": "AI_PROVIDER",
+    "entry_point": "provider.ChatGPTProvider",
+    "category": "text",
+    "requires_variables": [
+        {
+            "name": "OPENAI_API_KEY",
+            "description": "Your API Key from OpenAI Platform to access GPT models.",
+            "is_secret": true
+        }
+    ]
+}

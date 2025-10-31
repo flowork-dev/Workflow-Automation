@@ -1,0 +1,51 @@
+{
+    "id": "file_system_trigger",
+    "name": "loc.fs_trigger_name",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "description": "loc.fs_trigger_desc",
+    "type": "TRIGGER",
+    "entry_point": "processor.FileSystemTriggerModule",
+    "listener_entry_point": "processor.FileSystemListener",
+    "tier": "free",
+    "requires_input": false,
+    "requires_services": [
+        "logger",
+        "loc"
+    ],
+    "properties": [
+        {
+            "id": "path_to_watch",
+            "type": "folderpath",
+            "label": "loc.prop_fs_path_label",
+            "description": "loc.prop_fs_path_desc",
+            "default": ""
+        },
+        {
+            "id": "event_to_watch",
+            "type": "enum",
+            "label": "loc.prop_fs_event_label",
+            "description": "loc.prop_fs_event_desc",
+            "options": ["created", "modified", "deleted", "moved"],
+            "default": "created"
+        },
+        {
+            "id": "watch_subdirectories",
+            "type": "boolean",
+            "label": "loc.prop_fs_subdirs_label",
+            "description": "loc.prop_fs_subdirs_desc",
+            "default": true
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ]
+}

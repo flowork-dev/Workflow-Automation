@@ -1,0 +1,17 @@
+{
+    "nodes": [
+        {
+            "id": "start_lifecycle",
+            "name": "Start Core Lifecycle",
+            "x": 150,
+            "y": 100,
+            "description": "",
+            "module_id": "set_variable_module",
+            "config_values": {
+                "python_code": "# This workflow now triggers the dedicated startup service.\nlog('Core Lifecycle: Triggering StartupService...', 'INFO')\nstartup_service = kernel.get_service('startup_service')\nif startup_service:\n    result = startup_service.run_startup_sequence()\n    log(f'Startup sequence finished with status: {result}', 'SUCCESS')\nelse:\n    log('FATAL: StartupService not found!', 'ERROR')"
+            }
+        }
+    ],
+    "connections": [],
+    "labels": []
+}

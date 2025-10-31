@@ -1,0 +1,48 @@
+{
+    "id": "prompt_template_plugin",
+    "name": "Prompt Template",
+    "version": "2.1.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Selects a pre-saved prompt template from the Prompt Manager and outputs its content.",
+    "type": "PLUGIN",
+    "entry_point": "processor.PromptTemplateModule",
+    "tier": "free",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel",
+        "prompt_manager_service"
+    ],
+    "display_properties": {
+        "shape": "icon_box",
+        "icon_file": "icon.png"
+    },
+    "properties": [
+        {
+            "id": "selected_prompt_id",
+            "type": "enum",
+            "label": "loc.prop_prompt_template_select_label",
+            "default": ""
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success",
+            "port_position": "top"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.prompt_template",
+            "type": "string",
+            "description": "The full text content of the selected prompt template."
+        }
+    ]
+}

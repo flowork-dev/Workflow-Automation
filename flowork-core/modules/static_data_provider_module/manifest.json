@@ -1,0 +1,41 @@
+{
+    "id": "static_data_provider_module",
+    "name": "Static Data Provider",
+    "version": "1.0.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO",
+    "email": "sahidinaola@gmail.com",
+    "website": "www.teetah.art",
+    "description": "Injects various types of static data (text, code blocks, file paths) into the payload. Perfect for initializing a workflow or for testing other modules.",
+    "type": "LOGIC",
+    "entry_point": "processor.StaticDataProviderModule",
+    "tier": "free",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel"
+    ],
+    "properties": [
+        {
+            "id": "variables_to_set",
+            "type": "dynamic_key_value_editor",
+            "label": "loc.prop_data_list_label"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "[dynamic]",
+            "type": "any",
+            "description": "Output variables are generated dynamically based on the configuration in the properties."
+        }
+    ]
+}

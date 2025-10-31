@@ -1,0 +1,81 @@
+# =======================================================
+# FLOWORK DOCKERIGNORE (FINAL VERSION V2)
+# This file tells Docker which files/folders to IGNORE
+# during a build process. This makes builds extremely fast.
+# Hardcode: English, as per Rule #8.
+# =======================================================
+
+# Ignore Python virtual environments (THE BIGGEST PROBLEM)
+**/.venv/
+**/venv/
+
+# Ignore portabl Python environments from old structure
+vendor/
+# (COMMENT) The python folders inside each service are not needed for the build context
+flowork-core/python/
+flowork-gateway/python/
+flowork-gui/python/
+scripts/
+backup.py
+# Ignore Python cache and compiled files
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Ignore Node.js dependencies
+node_modules/
+ai_models/
+backup/
+flowork-core-data/generated_images_by_service/
+flowork-core-data/users/
+flowork-core-data/datasets.json
+flowork-core-data/license.lic
+flowork-core-data/metrics_history.jsonl
+flowork-core-data/settings.json
+flowork-core-data/state.json
+flowork-core-data/trigger_index.cache
+# Ignore build artifacts and distribution folders
+build/
+dist/
+*.egg-info/
+flowork-gui/
+flowork-gui/template/web/dist/
+momod/momod-gui/dist/
+# (COMMENT) flowork_engine.dist is NOT ignored so it can be copied into the image.
+
+# Ignore environment files, logs, and local databases
+.env
+*.env
+*.log
+*.db
+*.sqlite3
+
+# Ignore runtime data, logs, and specific config folders
+data/
+logs/
+_logs/
+monitoring/
+migrations/
+.cloudflared/
+
+# Ignore Git and IDE configuration
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Ignore local scripts
+*.sh
+2-STOP_DOCKER_(SAFE).bat
+3-STOP_DOCKER_(RESET_DATABASE).bat
+4-DOCKER_LOGS.bat
+5-UPLOAD_MOMOD_GUI.bat
+6-UPLOAD_FLOWORK_GUI.bat
+7-upload-docs.bat
+8.PUBLISH.bat
+9.UPLOAD_ALL_PROJECT.bat
+site_file.txt
+generate_env.py

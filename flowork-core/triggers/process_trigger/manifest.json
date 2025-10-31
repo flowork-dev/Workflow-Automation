@@ -1,0 +1,50 @@
+{
+    "id": "process_trigger",
+    "name": "loc.process_trigger_name",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "description": "loc.process_trigger_desc",
+    "type": "TRIGGER",
+    "entry_point": "processor.ProcessTriggerModule",
+    "listener_entry_point": "processor.ProcessListener",
+    "tier": "free",
+    "requires_input": false,
+    "requires_services": [
+        "logger",
+        "loc"
+    ],
+    "properties": [
+        {
+            "id": "process_name",
+            "type": "string",
+            "label": "loc.prop_process_name_label",
+            "description": "loc.prop_process_name_desc",
+            "default": "notepad.exe"
+        },
+        {
+            "id": "event_to_watch",
+            "type": "enum",
+            "label": "loc.prop_process_event_label",
+            "options": ["started", "stopped"],
+            "default": "started"
+        },
+        {
+            "id": "check_interval",
+            "type": "integer",
+            "label": "loc.prop_process_interval_label",
+            "description": "loc.prop_process_interval_desc",
+            "default": 5
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ]
+}

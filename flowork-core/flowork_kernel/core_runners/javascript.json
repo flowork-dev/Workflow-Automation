@@ -1,0 +1,6 @@
+{
+    "language_name": "JavaScript (Node.js)",
+    "command": "node",
+    "file_extension": ".js",
+    "version_argument": "--version"
+}

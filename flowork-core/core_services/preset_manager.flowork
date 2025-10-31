@@ -1,0 +1,83 @@
+{
+    "nodes": [
+        {
+            "id": "get_preset_list_node",
+            "name": "get_preset_list",
+            "x": 150,
+            "y": 100,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# This function lists all .json files in the presets directory.\npresets_dir = os.path.join(kernel.data_path, \"presets\")\nif not os.path.isdir(presets_dir):\n    os.makedirs(presets_dir)\n    return []\ntry:\n    presets = [f.replace('.json', '') for f in os.listdir(presets_dir) if f.endswith('.json') and not f.startswith('__')]\n    return sorted(presets)\nexcept Exception as e:\n    log(f\"PresetManagerWorkflow(get_preset_list): Error - {e}\", \"ERROR\")\n    return []"
+            }
+        },
+        {
+            "id": "get_preset_data_node",
+            "name": "get_preset_data",
+            "x": 150,
+            "y": 250,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# This function reads the content of a specific preset JSON file.\npreset_name = args[0] if args else None\nif not preset_name:\n    return None\nfilepath = os.path.join(kernel.data_path, \"presets\", f\"{preset_name}.json\")\nif not os.path.exists(filepath):\n    return None\ntry:\n    with open(filepath, 'r', encoding='utf-8') as f:\n        return json.load(f)\nexcept Exception as e:\n    log(f\"PresetManagerWorkflow(get_preset_data): Error - {e}\", \"ERROR\")\n    return None"
+            }
+        },
+        {
+            "id": "save_preset_node",
+            "name": "save_preset",
+            "x": 150,
+            "y": 400,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# This function saves workflow data to a .json file.\npreset_name = args[0] if len(args) > 0 else None\nworkflow_data = args[1] if len(args) > 1 else None\nif not preset_name or not workflow_data:\n    log(\"PresetManagerWorkflow(save_preset): Missing preset name or data.\", \"ERROR\")\n    return False\n\npresets_dir = os.path.join(kernel.data_path, \"presets\")\nversions_dir = os.path.join(presets_dir, \"__versions__\", preset_name)\nos.makedirs(versions_dir, exist_ok=True)\n\nfilepath = os.path.join(presets_dir, f\"{preset_name}.json\")\n\n# Backup existing file to versions\nif os.path.exists(filepath):\n    try:\n        timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')\n        backup_path = os.path.join(versions_dir, f\"{timestamp}.jsonbak\")\n        shutil.copyfile(filepath, backup_path)\n        log(f'PresetManagerWorkflow: Backed up old version of {preset_name} to {backup_path}', 'INFO')\n    except Exception as e:\n        log(f'PresetManagerWorkflow: Failed to back up preset version for {preset_name}: {e}', 'WARN')\n\n# Save the new file\ntry:\n    with open(filepath, 'w', encoding='utf-8') as f:\n        json.dump(workflow_data, f, indent=4)\n    return True\nexcept Exception as e:\n    log(f\"PresetManagerWorkflow(save_preset): Error saving preset {preset_name}: {e}\", \"ERROR\")\n    return False"
+            }
+        },
+        {
+            "id": "delete_preset_node",
+            "name": "delete_preset",
+            "x": 150,
+            "y": 550,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# This function deletes a preset file and its versions.\npreset_name = args[0] if args else None\nif not preset_name:\n    return False\n\npresets_dir = os.path.join(kernel.data_path, \"presets\")\nfilepath = os.path.join(presets_dir, f\"{preset_name}.json\")\nversions_dir = os.path.join(presets_dir, \"__versions__\", preset_name)\n\nfile_deleted = False\nif os.path.exists(filepath):\n    try:\n        os.remove(filepath)\n        file_deleted = True\n    except Exception as e:\n        log(f'PresetManagerWorkflow(delete_preset): Could not delete main file for {preset_name}: {e}', 'ERROR')\n\nif os.path.isdir(versions_dir):\n    try:\n        shutil.rmtree(versions_dir)\n    except Exception as e:\n        log(f'PresetManagerWorkflow(delete_preset): Could not delete versions for {preset_name}: {e}', 'ERROR')\n\nreturn file_deleted"
+            }
+        },
+        {
+            "id": "get_preset_versions_node",
+            "name": "get_preset_versions",
+            "x": 400,
+            "y": 100,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# ADDED: This node lists all backed up versions for a preset.\npreset_name = args[0] if args else None\nif not preset_name:\n    return []\nversions_dir = os.path.join(kernel.data_path, \"presets\", \"__versions__\", preset_name)\nif not os.path.isdir(versions_dir):\n    return []\ntry:\n    version_files = [f for f in os.listdir(versions_dir) if f.endswith('.jsonbak')]\n    version_data = []\n    for filename in version_files:\n        timestamp_str = filename.replace('.jsonbak', '')\n        version_data.append({'filename': filename, 'timestamp': timestamp_str})\n    # Sort by timestamp descending (newest first)\n    return sorted(version_data, key=lambda x: x['timestamp'], reverse=True)\nexcept Exception as e:\n    log(f'PresetManagerWorkflow(get_preset_versions): Error - {e}', 'ERROR')\n    return []"
+            }
+        },
+        {
+            "id": "load_preset_version_node",
+            "name": "load_preset_version",
+            "x": 400,
+            "y": 250,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# ADDED: This node loads the content of a specific version file.\npreset_name = args[0] if len(args) > 0 else None\nversion_filename = args[1] if len(args) > 1 else None\nif not preset_name or not version_filename:\n    return None\nversion_path = os.path.join(kernel.data_path, \"presets\", \"__versions__\", preset_name, version_filename)\nif not os.path.exists(version_path):\n    return None\ntry:\n    with open(version_path, 'r', encoding='utf-8') as f:\n        return json.load(f)\nexcept Exception as e:\n    log(f'PresetManagerWorkflow(load_preset_version): Error - {e}', 'ERROR')\n    return None"
+            }
+        },
+        {
+            "id": "delete_preset_version_node",
+            "name": "delete_preset_version",
+            "x": 400,
+            "y": 400,
+            "description": "",
+            "module_id": "function_runner_module",
+            "config_values": {
+                "python_code": "# ADDED: This node deletes a specific version file.\npreset_name = args[0] if len(args) > 0 else None\nversion_filename = args[1] if len(args) > 1 else None\nif not preset_name or not version_filename:\n    return False\nversion_path = os.path.join(kernel.data_path, \"presets\", \"__versions__\", preset_name, version_filename)\nif os.path.exists(version_path):\n    try:\n        os.remove(version_path)\n        return True\n    except Exception as e:\n        log(f'PresetManagerWorkflow(delete_preset_version): Error - {e}', 'ERROR')\n        return False\nreturn False"
+            }
+        }
+    ],
+    "connections": [],
+    "labels": []
+}

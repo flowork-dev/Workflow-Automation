@@ -1,0 +1,95 @@
+{
+    "id": "stable_diffusion_xl_module",
+    "name": "Stable Diffusion XL Image Generator",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Generates images from text prompts using local Stable Diffusion XL models.",
+    "type": "ACTION",
+    "entry_point": "processor.StableDiffusionXLModule",
+    "tier": "free",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel"
+    ],
+    "properties": [
+        {
+            "id": "model_folder",
+            "type": "enum",
+            "label": "AI Model",
+            "description": "Nama folder model yang ada di dalam direktori 'ai_models/image'. CONTOH: 'stable-diffusion-xl-base-1.0'. JANGAN gunakan 'default'."
+        },
+        {
+            "id": "prompt",
+            "type": "textarea",
+            "label": "Prompt",
+            "default": "a cinematic photo of a raccoon astronaut, professional photography, 8k"
+        },
+        {
+            "id": "negative_prompt",
+            "type": "textarea",
+            "label": "Negative Prompt",
+            "default": "blurry, worst quality, low quality, cartoon, anime"
+        },
+        {
+            "id": "output_folder",
+            "type": "string",
+            "label": "Output Folder",
+            "description": "The folder where the generated image will be saved. If empty, a default folder will be used.",
+            "default": ""
+        },
+        {
+            "id": "output_filename_prefix",
+            "type": "string",
+            "label": "Output Filename Prefix (Optional)",
+            "description": "A custom prefix for the saved image file."
+        },
+        {
+            "id": "width",
+            "type": "integer",
+            "label": "Width",
+            "default": 1024
+        },
+        {
+            "id": "height",
+            "type": "integer",
+            "label": "Height",
+            "default": 1024
+        },
+        {
+            "id": "guidance_scale",
+            "type": "float",
+            "label": "Guidance Scale (CFG)",
+            "default": 7.5
+        },
+        {
+            "id": "num_inference_steps",
+            "type": "integer",
+            "label": "Inference Steps",
+            "default": 30
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.image_path",
+            "type": "string",
+            "description": "The full local path to the generated image file."
+        }
+    ]
+}

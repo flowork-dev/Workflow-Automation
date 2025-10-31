@@ -1,0 +1,5 @@
+{
+    "module_name": "AI Brain Provider",
+    "module_description": "A universal AI Brain for agents. Select any AI provider to be the decision-making core.",
+    "brain_provider_select_label": "AI Provider for Brain:"
+}

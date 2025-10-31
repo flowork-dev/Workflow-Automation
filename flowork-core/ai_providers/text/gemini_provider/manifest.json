@@ -1,0 +1,17 @@
+{
+    "id": "gemini_provider",
+    "name": "Google Gemini AI Provider",
+    "version": "1.0",
+    "author": "AWENK AUDICO",
+    "description": "Menyediakan konektivitas dan fungsionalitas chat dengan model AI Google Gemini.",
+    "type": "AI_PROVIDER",
+    "entry_point": "provider.GeminiProvider",
+    "category": "text",
+    "requires_variables": [
+        {
+            "name": "GEMINI_API_KEY",
+            "description": "API Key Anda dari Google AI Studio untuk mengakses model Gemini.",
+            "is_secret": true
+        }
+    ]
+}

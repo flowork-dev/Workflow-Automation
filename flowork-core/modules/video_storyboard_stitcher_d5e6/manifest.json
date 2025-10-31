@@ -1,0 +1,99 @@
+{
+    "id": "video_storyboard_stitcher_d5e6",
+    "name": "Video Storyboard Stitcher",
+    "version": "2.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO & Gemini",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Stitches videos together based on a defined sequence of folders (storyboard). Each step in the sequence randomly picks one clip from its corresponding folder. Offers different generation modes.",
+    "type": "ACTION",
+    "entry_point": "processor.VideoStoryboardStitcherModule",
+    "tier": "architect",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel"
+    ],
+    "properties": [
+        {
+            "id": "output_folder",
+            "type": "folderpath",
+            "label": "loc.prop_storyboard_output_folder_label"
+        },
+        {
+            "id": "output_filename_prefix",
+            "type": "string",
+            "label": "loc.prop_storyboard_output_prefix_label",
+            "default": "storyboard_video"
+        },
+        {
+            "id": "music_folder_path",
+            "type": "folderpath",
+            "label": "loc.prop_storyboard_music_folder_label",
+            "default": ""
+        },
+        {
+            "id": "music_volume_percent",
+            "type": "integer",
+            "label": "loc.prop_storyboard_music_volume_label",
+            "default": 20
+        },
+        {
+            "id": "original_audio_mode",
+            "type": "enum",
+            "options": ["replace", "merge"],
+            "label": "loc.prop_storyboard_original_audio_mode_label",
+            "default": "replace"
+        },
+        {
+            "id": "original_audio_volume",
+            "type": "integer",
+            "label": "loc.prop_storyboard_original_audio_volume_label",
+            "default": 20
+        },
+        {
+            "id": "generation_mode",
+            "type": "enum",
+            "label": "loc.prop_storyboard_generation_mode_label",
+            "options": ["match_largest", "limit_by_smallest"],
+            "default": "match_largest"
+        },
+        {
+            "id": "delete_after_use",
+            "type": "boolean",
+            "label": "loc.prop_stitcher_delete_after_use_label",
+            "default": false
+        },
+        {
+            "id": "video_sections",
+            "type": "list",
+            "label": "loc.prop_storyboard_sections_label"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.stitched_video_path",
+            "type": "string",
+            "description": "The full path to the final, stitched video file."
+        },
+        {
+            "name": "data.clips_used",
+            "type": "list",
+            "description": "A list of the specific video clips that were randomly selected and used in the final video."
+        }
+    ]
+}

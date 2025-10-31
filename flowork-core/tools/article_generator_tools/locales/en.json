@@ -1,0 +1,5 @@
+{
+    "module_name": "Article Generator",
+    "prop_article_gen_provider_label": "AI Provider to Use:",
+    "prop_article_gen_prompt_source_label": "Get Prompt from Variable:"
+}

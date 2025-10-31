@@ -1,0 +1,5 @@
+{
+    "module_name": "Generator Artikel",
+    "prop_article_gen_provider_label": "Provider AI yang Digunakan:",
+    "prop_article_gen_prompt_source_label": "Ambil Prompt dari Variabel:"
+}

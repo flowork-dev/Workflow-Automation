@@ -1,0 +1,47 @@
+{
+    "id": "image_generator_tools",
+    "name": "Image Generator Tools",
+    "version": "1.1.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO & Gemini",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "A tool for AI agents to generate images from a text prompt using the globally configured AI model for image tasks.",
+    "type": "PLUGIN",
+    "entry_point": "processor.ImageGeneratorModule",
+    "tier": "pro",
+    "behaviors": [
+        "retry"
+    ],
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel"
+    ],
+    "display_properties": {
+        "shape": "agent_brain",
+        "icon_file": "icon.png"
+    },
+    "properties": [
+        {
+            "id": "prompt_source_variable",
+            "type": "string",
+            "label": "loc.prop_image_gen_prompt_source_label",
+            "default": "data.prompt_gambar"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success",
+            "port_position": "top"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.generated_image_path",
+            "type": "string",
+            "description": "The full local path to the generated image file."
+        }
+    ]
+}

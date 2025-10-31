@@ -1,0 +1,54 @@
+{
+    "scanners": {
+        "marketplace_integrity": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        },
+        "manifest_mismatch": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        },
+        "phase_one_integrity": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        },
+        "data_preview_readiness": {
+            "enabled": true,
+            "severity": "MINOR",
+            "config": {}
+        },
+        "cache_integrity": {
+            "enabled": true,
+            "severity": "MAJOR",
+            "config": {}
+        },
+        "ai_copilot_health": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        },
+        "core_compiler_health": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        },
+        "manifest_completeness": {
+            "enabled": true,
+            "severity": "MINOR",
+            "config": {}
+        },
+        "tier_attribute": {
+            "enabled": true,
+            "severity": "MAJOR",
+            "config": {}
+        },
+        "core_integrity": {
+            "enabled": true,
+            "severity": "CRITICAL",
+            "config": {}
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "id": "cron_trigger",
+    "name": "loc.cron_trigger_name",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "description": "loc.cron_trigger_desc",
+    "type": "TRIGGER",
+    "entry_point": "processor.CronTriggerModule",
+    "tier": "free",
+    "requires_input": false,
+    "requires_services": [
+        "logger",
+        "loc"
+    ],
+    "properties": [
+        {
+            "id": "cron_string",
+            "type": "cron_editor",
+            "label": "loc.prop_cron_string_label",
+            "description": "loc.prop_cron_string_desc",
+            "default": "*/5 * * * *"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ]
+}

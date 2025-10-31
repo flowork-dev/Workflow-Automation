@@ -1,0 +1,24 @@
+{
+    "id": "core_compiler_module",
+    "name": "Core Service Compiler",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "A system module that compiles .flowork service definitions into runnable Python service classes.",
+    "type": "ACTION",
+    "entry_point": "processor.CoreCompilerModule",
+    "tier": "architect",
+    "requires_services": [
+        "kernel",
+        "logger",
+        "loc"
+    ],
+    "output_ports": [
+        {
+            "name": "success",
+            "display_name": "Success"
+        }
+    ]
+}

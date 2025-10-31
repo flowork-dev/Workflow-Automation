@@ -1,0 +1,18 @@
+{
+    "id": "metrics_dashboard",
+    "name": "Plugin Dashboard Metrik",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Awenk Audico",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Menyediakan UI dashboard untuk menampilkan metrik sistem.",
+    "type": "ACTION",
+    "entry_point": "processor.MetricsDashboardModule",
+    "requires_services": [
+        "logger",
+        "loc",
+        "state_manager",
+        "kernel"
+    ]
+}

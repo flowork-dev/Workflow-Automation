@@ -1,0 +1,5 @@
+{
+    "chatgpt_provider_name": "OpenAI ChatGPT",
+    "chatgpt_provider_err_not_configured": "Provider ChatGPT tidak terkonfigurasi. Periksa apakah OPENAI_API_KEY sudah valid di Pengaturan.",
+    "chatgpt_api_error": "CHATGPT_API_ERROR: {error}"
+}

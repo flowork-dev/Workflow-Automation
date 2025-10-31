@@ -1,0 +1,5 @@
+{
+    "chatgpt_provider_name": "OpenAI ChatGPT",
+    "chatgpt_provider_err_not_configured": "ChatGPT Provider is not configured. Check for a valid OPENAI_API_KEY in Settings.",
+    "chatgpt_api_error": "CHATGPT_API_ERROR: {error}"
+}

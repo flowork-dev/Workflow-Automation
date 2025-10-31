@@ -1,0 +1,6 @@
+{
+    "language_name": "Ruby",
+    "command": "ruby",
+    "file_extension": ".rb",
+    "version_argument": "--version"
+}

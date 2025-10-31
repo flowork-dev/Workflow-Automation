@@ -1,0 +1,17 @@
+{
+    "id": "metrics_logger_plugin",
+    "name": "Metrics Logger Service",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "awenk audico & gemini",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "A service plugin that listens to metric updates and logs them for historical analysis.",
+    "type": "SERVICE",
+    "entry_point": "metrics_logger.MetricsLogger",
+    "requires_services": [
+        "kernel",
+        "event_bus"
+    ],
+    "is_service": true
+}

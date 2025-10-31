@@ -1,0 +1,31 @@
+{
+    "id": "function_runner_module",
+    "name": "Function Runner (Nano)",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Executes a small, self-contained Python function. Provides 'payload', 'log', 'kernel', and 'args' context.",
+    "type": "LOGIC",
+    "entry_point": "processor.FunctionRunnerModule",
+    "tier": "architect",
+    "requires_services": [
+        "logger",
+        "kernel"
+    ],
+    "properties": [
+        {
+            "id": "function_code",
+            "type": "code",
+            "language": "python",
+            "label": "Python Code to Execute"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        }
+    ]
+}

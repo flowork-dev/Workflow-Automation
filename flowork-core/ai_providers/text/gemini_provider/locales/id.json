@@ -1,0 +1,5 @@
+{
+    "gemini_provider_name": "Google Gemini",
+    "gemini_provider_err_not_configured": "Provider Gemini tidak terkonfigurasi. Periksa apakah GEMINI_API_KEY sudah valid di Pengaturan.",
+    "gemini_text_generation_prompt_wrapper": "Buatkan respons teks untuk permintaan ini: '{prompt}'"
+}

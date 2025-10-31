@@ -1,0 +1,5 @@
+{
+    "gemini_provider_name": "Google Gemini",
+    "gemini_provider_err_not_configured": "Gemini Provider is not configured. Check for a valid GEMINI_API_KEY in Settings.",
+    "gemini_text_generation_prompt_wrapper": "Generate a text response for this request: '{prompt}'"
+}

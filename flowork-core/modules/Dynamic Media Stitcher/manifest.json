@@ -1,0 +1,116 @@
+{
+    "id": "dynamic_media_stitcher_b1c2",
+    "name": "Dynamic Media Stitcher",
+    "version": "6.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO & Gemini",
+    "email": "contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Intelligently stitches video or audio clips together. Select a reference (audio or video), and the module will randomly assemble clips from the other media type to match the duration for each file in the reference folder. Now with fully customizable, AI-powered automatic subtitle generation including karaoke effects.",
+    "type": "ACTION",
+    "entry_point": "processor.DynamicMediaStitcherModule",
+    "tier": "architect",
+    "behaviors": ["retry"],
+    "requires_services": ["logger", "loc", "kernel"],
+    "properties": [
+        {
+            "id": "job_list",
+            "type": "list",
+            "label": "loc.prop_stitcher_job_list_label"
+        },
+        {
+            "id": "duration_reference",
+            "type": "enum",
+            "options": ["audio", "video"],
+            "label": "loc.prop_stitcher_duration_reference_label",
+            "default": "audio"
+        },
+        {
+            "id": "original_audio_mode",
+            "type": "enum",
+            "options": ["replace", "merge"],
+            "label": "loc.prop_stitcher_original_audio_mode_label",
+            "default": "replace"
+        },
+        {
+            "id": "original_audio_volume",
+            "type": "integer",
+            "label": "loc.prop_stitcher_original_audio_volume_label",
+            "default": 20
+        },
+        {
+            "id": "add_subtitles",
+            "type": "boolean",
+            "label": "loc.prop_stitcher_add_subtitles_label",
+            "default": true
+        },
+        {
+            "id": "correction_dictionary",
+            "type": "textarea",
+            "label": "loc.prop_stitcher_correction_dictionary_label",
+            "description": "One correction per line in 'wrong: correct' format. This will perform a case-insensitive search and replace on the transcription result.",
+            "default": "flowwork: Flowork\nflo work: Flowork\nteeta: Teetah"
+        },
+        {
+            "id": "subtitle_model_size",
+            "type": "enum",
+            "options": ["tiny", "base", "small", "medium", "large-v3"],
+            "label": "loc.prop_stitcher_subtitle_model_size_label",
+            "default": "base"
+        },
+        {
+            "id": "subtitle_effect_style",
+            "type": "enum",
+            "options": ["Karaoke", "Word Reveal"],
+            "label": "loc.prop_stitcher_subtitle_effect_label",
+            "default": "Karaoke"
+        },
+        {
+            "id": "subtitle_font",
+            "type": "enum",
+            "label": "loc.prop_stitcher_subtitle_font_label",
+            "default": "Default"
+        },
+        {
+            "id": "subtitle_font_size",
+            "type": "integer",
+            "label": "loc.prop_stitcher_subtitle_font_size_label",
+            "default": 32
+        },
+        {
+            "id": "subtitle_primary_color",
+            "type": "color",
+            "label": "loc.prop_stitcher_subtitle_primary_color_label",
+            "default": "#FFFFFF"
+        },
+        {
+            "id": "subtitle_secondary_color",
+            "type": "color",
+            "label": "loc.prop_stitcher_subtitle_secondary_color_label",
+            "default": "#FFFF00"
+        },
+        {
+            "id": "subtitle_style",
+            "type": "enum",
+            "options": ["Default", "Outline", "Shadow"],
+            "label": "loc.prop_stitcher_subtitle_style_label",
+            "default": "Outline"
+        }
+    ],
+    "output_ports": [
+        {"name": "success", "display_name": "Success"},
+        {"name": "error", "display_name": "Error"}
+    ],
+    "output_schema": [
+        {
+            "name": "data.stitcher_results",
+            "type": "list",
+            "description": "A list of result objects for each processed job."
+        },
+        {
+            "name": "data.total_videos_created",
+            "type": "integer",
+            "description": "The total number of videos successfully created across all jobs."
+        }
+    ]
+}

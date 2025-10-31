@@ -1,0 +1,37 @@
+{
+    "id": "event_bus_trigger",
+    "name": "loc.eventbus_trigger_name",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Flowork System",
+    "description": "loc.eventbus_trigger_desc",
+    "type": "TRIGGER",
+    "entry_point": "processor.EventBusTriggerModule",
+    "listener_entry_point": "processor.EventBusListener",
+    "tier": "architect",
+    "requires_input": false,
+    "requires_services": [
+        "logger",
+        "loc",
+        "event_bus"
+    ],
+    "properties": [
+        {
+            "id": "event_name_to_listen",
+            "type": "string",
+            "label": "loc.prop_eventbus_name_label",
+            "description": "loc.prop_eventbus_name_desc",
+            "default": "CUSTOM_EVENT"
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        },
+        {
+            "name": "error",
+            "display_name": "Error"
+        }
+    ]
+}

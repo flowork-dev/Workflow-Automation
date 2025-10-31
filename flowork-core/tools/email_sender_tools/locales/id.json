@@ -1,0 +1,20 @@
+{
+    "prop_smtp_title": "Pengaturan Server SMTP",
+    "prop_smtp_server_label": "Server:",
+    "prop_smtp_port_label": "Port:",
+    "prop_smtp_username_label": "Username / Email:",
+    "prop_smtp_password_label": "Kata Sandi:",
+    "prop_recipient_source_label": "Penerima (Kepada)",
+    "prop_recipient_manual_label": "Penerima (Fallback):",
+    "prop_recipient_variable_label": "Ambil Penerima dari Variabel:",
+    "prop_subject_source_label": "Subjek Email",
+    "prop_subject_manual_label": "Subjek (Fallback):",
+    "prop_subject_variable_label": "Ambil Subjek dari Variabel:",
+    "prop_body_source_label": "Isi Email",
+    "prop_body_manual_label": "Isi Pesan (Fallback):",
+    "prop_body_variable_label": "Ambil Isi Pesan dari Variabel:",
+    "prop_mode_manual": "Input Manual",
+    "prop_mode_dynamic": "Dari Variabel Payload",
+    "prop_smtp_auto_fetch_info": "CATATAN: Modul ini secara otomatis menggunakan kredensial SMTP (Host, Port, User, Password) yang telah dikonfigurasi di Pengaturan > Manajemen Variabel & Secret.",
+    "prop_attachment_path_label": "Path Lampiran (dari Variabel):"
+}

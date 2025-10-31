@@ -1,0 +1,6 @@
+{
+    "language_name": "Python",
+    "command": "python",
+    "file_extension": ".py",
+    "version_argument": "--version"
+}

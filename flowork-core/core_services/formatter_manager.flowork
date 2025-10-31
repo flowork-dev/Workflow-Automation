@@ -1,0 +1,15 @@
+{
+    "nodes": [
+        {
+            "id": "get_formatter_node",
+            "name": "get_formatter",
+            "module_id": "function_runner_module",
+            "x": 150,
+            "y": 100,
+            "config_values": {
+                "python_code": "# This node replicates the logic of FormatterManagerService.get_formatter()\n# It receives the formatter_id as input and returns an instance of the formatter class.\n\n# Import the necessary library for dynamic loading\nimport importlib.util\n\n# Get formatter_id from the arguments passed to the method call\nformatter_id = args[0] if args else None\nif not formatter_id:\n    log('FormatterManagerWorkflow: formatter_id was not provided.', 'ERROR')\n    return None\n\nformatters_path = os.path.join(kernel.project_root_path, \"formatters\")\nformatter_dir = os.path.join(formatters_path, formatter_id)\n\nif not os.path.isdir(formatter_dir):\n    log(f'FormatterManagerWorkflow: Formatter directory not found for {formatter_id}', 'WARN')\n    return None\n\nmanifest_path = os.path.join(formatter_dir, \"manifest.json\")\nif not os.path.exists(manifest_path):\n    log(f'FormatterManagerWorkflow: manifest.json not found for {formatter_id}', 'WARN')\n    return None\n\ntry:\n    with open(manifest_path, 'r', encoding='utf-8') as f:\n        manifest = json.load(f)\n    \n    entry_point = manifest.get(\"entry_point\")\n    if not entry_point:\n        return None\n\n    module_filename, class_name = entry_point.split('.')\n    source_file = os.path.join(formatter_dir, f\"{module_filename}.py\")\n\n    # Dynamically load the module and class\n    spec = importlib.util.spec_from_file_location(f\"formatters.{formatter_id}\", source_file)\n    module_lib = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module_lib)\n    FormatterClass = getattr(module_lib, class_name)\n    \n    # Return an instance of the class\n    return FormatterClass()\n\nexcept Exception as e:\n    log(f'FormatterManagerWorkflow: Failed to load formatter {formatter_id}: {e}', 'ERROR')\n    return None"
+            }
+        }
+    ],
+    "connections": []
+}

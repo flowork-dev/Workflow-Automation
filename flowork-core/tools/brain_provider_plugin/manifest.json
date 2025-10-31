@@ -1,0 +1,42 @@
+{
+    "id": "brain_provider_plugin",
+    "name": "AI Brain Provider",
+    "version": "1.2.0",
+    "icon_file": "icon.png",
+    "author": "AWENK AUDICO",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "A universal AI Brain for agents. Select any configured AI provider (local model or API) to act as the agent's decision-making core.",
+    "type": "PLUGIN",
+    "entry_point": "processor.BrainProviderPlugin",
+    "subtype": "BRAIN_PROVIDER",
+    "tier": "pro",
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel",
+        "variable_manager_service",
+        "ai_provider_manager_service"
+    ],
+    "permissions": [],
+    "display_properties": {
+        "shape": "circle",
+        "icon_file": "icon.gif"
+    },
+    "properties": [
+        {
+            "id": "selected_ai_provider",
+            "type": "enum",
+            "label": "loc.brain_provider_select_label",
+            "default": ""
+        }
+    ],
+    "output_ports": [
+        {
+            "name": "brain_output",
+            "display_name": "Brain",
+            "port_position": "top",
+            "type": "tool"
+        }
+    ]
+}

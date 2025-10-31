@@ -1,0 +1,39 @@
+{
+    "id": "prompt_receiver_module",
+    "name": "Prompt Receiver",
+    "version": "1.0",
+    "icon_file": "icon.gif",
+    "author": "AWENK AUDICO",
+    "email": "sahidinaola@gmail.com",
+    "website": "www.teetah.art",
+    "description": "Receives a prompt and an optional file path from a UI widget via an event and passes it to the next node.",
+    "type": "CONTROL_FLOW",
+    "entry_point": "processor.PromptReceiverModule",
+    "tier": "free",
+    "requires_input": false,
+    "requires_services": [
+        "logger",
+        "loc",
+        "kernel",
+        "event_bus",
+        "workflow_executor_service"
+    ],
+    "output_ports": [
+        {
+            "name": "output",
+            "display_name": "Output"
+        }
+    ],
+    "output_schema": [
+        {
+            "name": "data.prompt",
+            "type": "string",
+            "description": "The text prompt received from the sender widget."
+        },
+        {
+            "name": "data.file_path",
+            "type": "string",
+            "description": "The full local path to the file sent from the sender widget."
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "id": "flowork_core_ui",
+    "name": "Flowork Core UI",
+    "version": "1.0",
+    "icon_file": "icon.png",
+    "author": "Awenk Audico",
+    "email": "Contributor@teetah.art",
+    "website": "www.teetah.art",
+    "description": "Menyediakan semua antarmuka manajemen inti untuk Flowork.",
+    "type": "PLUGIN",
+    "entry_point": "core_ui_provider.CoreUIProvider",
+    "requires_services": [
+        "kernel",
+        "loc",
+        "logger"
+    ],
+    "permissions": [
+        "ui_provider"
+    ]
+}

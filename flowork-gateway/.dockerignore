@@ -1,0 +1,7 @@
+# Abaikan folder python portabel di dalam gateway
+python/
+
+# Abaikan cache
+__pycache__/
+*.pyc
+.pytest_cache/

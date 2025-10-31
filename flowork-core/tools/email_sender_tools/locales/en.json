@@ -1,0 +1,20 @@
+{
+    "prop_smtp_title": "SMTP Server Settings",
+    "prop_smtp_server_label": "Server:",
+    "prop_smtp_port_label": "Port:",
+    "prop_smtp_username_label": "Username / Email:",
+    "prop_smtp_password_label": "Password:",
+    "prop_recipient_source_label": "Recipient (To)",
+    "prop_recipient_manual_label": "Recipient (Fallback):",
+    "prop_recipient_variable_label": "Get Recipient from Variable:",
+    "prop_subject_source_label": "Email Subject",
+    "prop_subject_manual_label": "Subject (Fallback):",
+    "prop_subject_variable_label": "Get Subject from Variable:",
+    "prop_body_source_label": "Email Body",
+    "prop_body_manual_label": "Body (Fallback):",
+    "prop_body_variable_label": "Get Body from Variable:",
+    "prop_mode_manual": "Manual Input",
+    "prop_mode_dynamic": "From Payload Variable",
+    "prop_smtp_auto_fetch_info": "NOTE: This module automatically uses SMTP credentials (Host, Port, User, Password) configured in Settings > Variable & Secret Management.",
+    "prop_attachment_path_label": "Attachment Path (from Variable):"
+}

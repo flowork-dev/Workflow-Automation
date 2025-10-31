@@ -1,0 +1,52 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: ./flowork-gateway/Dockerfile
+    container_name: flowork_gateway
+    ports:
+      - "8000:8000"
+      - "5001:5001" # Dashboard
+      - "12345:12345" # WebSocket Server
+    environment:
+      - DATABASE_URL=sqlite:////app/data/gateway.db
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - GATEWAY_SECRET_TOKEN=${GATEWAY_SECRET_TOKEN}
+      - FLOWORK_MASTER_PRIVATE_KEY=${FLOWORK_MASTER_PRIVATE_KEY}
+      - FLOWORK_ENGINE_ID=${FLOWORK_ENGINE_ID}
+      - FLOWORK_ENGINE_TOKEN=${FLOWORK_ENGINE_TOKEN}
+      - CORE_API_PORT=8989
+    volumes:
+      - gateway_data:/app/data # (COMMENT) Ini untuk database SQLite gateway
+      - ./flowork-core-data:/app/core-data
+      - "${USERPROFILE}/Desktop:/host_desktop:rw"
+      - "${USERPROFILE}/Documents:/host_documents:rw"
+      - "${USERPROFILE}/Videos:/host_videos:rw"
+      - "${USERPROFILE}/Music:/host_music:rw"
+      - "${USERPROFILE}/Pictures:/host_pictures:rw"
+    networks:
+      - flowork-net
+    entrypoint: ["/bin/sh", "-c", "chmod +x ./entrypoint.sh && ./entrypoint.sh"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/system/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: flowork_cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    networks:
+      - flowork-net
+    depends_on:
+
+      gateway:
+        condition: service_healthy
+volumes:
+  gateway_data:
+
+networks:
+  flowork-net:
+    driver: bridge

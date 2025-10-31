@@ -1,0 +1,5 @@
+{
+    "module_name": "AI Brain Provider",
+    "module_description": "Otak AI universal untuk agen. Pilih provider AI manapun untuk menjadi inti pengambilan keputusan.",
+    "brain_provider_select_label": "Provider AI untuk Otak:"
+}
